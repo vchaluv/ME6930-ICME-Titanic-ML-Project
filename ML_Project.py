@@ -64,8 +64,7 @@ combine = [combined_df] #[train_df, test_df] # Useful for filling in empty entri
 
 for dataset in combine: # Perform this action for both the testing and training datasets
     #  Removing unused columns
-    dataset.drop(['Name','Ticket','Cabin'],inplace=True,axis=1)
-
+    dataset.drop(['Ticket','Cabin'],inplace=True,axis=1)
 
     ## Making sex data usable
 
@@ -213,7 +212,7 @@ dt = combined_df.copy()
 
 # Column "Embarked" must also be dropped because it contained non-float data, which
 # is incompatible with the Decision Trees algorithm
-X = dt.drop(['Survived','Embarked_S','Embarked_C','Embarked_Q'], axis=1)
+X = dt.drop(['Survived'], axis=1)
 #X = dt.drop(['Survived','Embarked'], axis=1) #dt.iloc[:, [2,3]].values
 y = dt['Survived'] #dt.iloc[:, 4].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
